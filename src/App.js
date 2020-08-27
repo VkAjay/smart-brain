@@ -70,6 +70,7 @@ class App extends Component {
   }
 
   onPictureSubmit = () => {
+   if(this.state.input) {
     this.setState({imageURL: this.state.input})
       fetch('https://frozen-coast-09616.herokuapp.com/imageUrl', {
         method: 'post',
@@ -80,7 +81,7 @@ class App extends Component {
       })
       .then(response => response.json())
       .then(response => {
-        if(response.objects) {
+        if(response) {
           fetch('https://frozen-coast-09616.herokuapp.com/image', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
@@ -98,6 +99,7 @@ class App extends Component {
       })
       .then(faceloc => this.setState({box: faceloc}))
       .catch(err => console.log(err));
+    }
   }
 
   onRouteChange =(route) => {
