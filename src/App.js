@@ -70,7 +70,7 @@ class App extends Component {
   }
 
   onPictureSubmit = () => {
-   if(this.state.input) {
+   if(this.state.input !== '') {
     this.setState({imageURL: this.state.input})
       fetch('https://frozen-coast-09616.herokuapp.com/imageUrl', {
         method: 'post',
